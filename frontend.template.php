@@ -62,8 +62,8 @@ function printMessageBody($email, $purifier) {
           crossorigin="anonymous">
     <link rel="stylesheet" href="assets/fontawesome/v5.0.13/all.css">
     <title><?php
-        echo "HmmmMail - ";
         echo $emails ? "(" . count($emails) . ") " : "";
+        echo "Inbox - ";
         echo $user->address ?></title>
     <link rel="stylesheet" href="assets/spinner.css">
     <link rel="stylesheet" href="assets/custom.css">
