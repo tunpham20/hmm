@@ -54,6 +54,23 @@ The app searches for config.php file into the entire directory, to avoid hack mo
         $config['blocked_usernames'] = array('root', 'admin', 'temp', 'administrator', 'hostmaster', 'postmaster', 'webmaster');
 * Save file. Enjoy
 
+## Enable GZIP Compression (For Apache, Litespeed/Openlitespeed only)
+
+* Create/Open .htaccess in your `public_html` folder, paste this.
+
+        <ifModule mod_gzip.c>
+        mod_gzip_on Yes
+        mod_gzip_dechunk Yes
+        mod_gzip_item_include file \.(html?|txt|css|js|php|pl)$
+        mod_gzip_item_include mime ^application/x-javascript.*
+        mod_gzip_item_include mime ^text/.*
+        mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+        mod_gzip_item_exclude mime ^image/.*
+        mod_gzip_item_include handler ^cgi-script$
+        </ifModule>
+
+* I haven't try with Nginx before, you can try it. [How to?](https://www.google.com/search?q=gzip+nginx&oq=gzip+nginx)
+
 ## Enable SSL
 * Make sure you have set up SSL certificate forr your website.
 * Create/Open .htaccess in your `public_html` folder, paste this.
