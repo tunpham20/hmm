@@ -6,32 +6,42 @@ User $user - User object
 array $config - config array
 array $emails - array of emails
 */
+
 require_once './autolink.php';
+
 // Load HTML Purifier
 $purifier_config = HTMLPurifier_Config::createDefault();
 $purifier_config->set('HTML.Nofollow', true);
 $purifier_config->set('HTML.ForbiddenElements', array("img"));
 $purifier = new HTMLPurifier($purifier_config);
+
 \Moment\Moment::setLocale($config['locale']);
+
 $mailIds = array_map(function ($mail) {
     return $mail->id;
 }, $emails);
 $mailIdsJoinedString = filter_var(join('|', $mailIds), FILTER_SANITIZE_SPECIAL_CHARS);
+
 // define bigger renderings here to keep the php sections within the html short.
 function niceDate($date) {
     $m = new \Moment\Moment($date, date_default_timezone_get());
     return $m->calendar();
 }
+
 function printMessageBody($email, $purifier) {
     global $config;
+
     // To avoid showing empty mails, first purify the html and plaintext
     // before checking if they are empty.
     $safeHtml = $purifier->purify($email->textHtml);
+
     $safeText = htmlspecialchars($email->textPlain);
     $safeText = nl2br($safeText);
     $safeText = \AutoLinkExtension::auto_link_text($safeText);
+
     $hasHtml = strlen(trim($safeHtml)) > 0;
     $hasText = strlen(trim($safeText)) > 0;
+
     if ($config['prefer_plaintext']) {
         if ($hasText) {
             echo $safeText;
@@ -46,21 +56,30 @@ function printMessageBody($email, $purifier) {
         }
     }
 }
+
 ?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="assets/bootstrap/4.1.1/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fontawesome/v5.0.13/all.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/4.1.1/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/fontawesome/v5.0.13/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+          crossorigin="anonymous">
     <title><?php
-        echo 'HmmmMail - '; 
         echo $emails ? "(" . count($emails) . ") " : "";
         echo $user->address ?></title>
     <link rel="stylesheet" href="assets/spinner.css">
     <link rel="stylesheet" href="assets/custom.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
     <script>
         var mailCount = <?php echo count($emails)?>;
         setInterval(function () {
@@ -79,10 +98,15 @@ function printMessageBody($email, $purifier) {
                 }
             };
             r.send();
+
         }, 15000);
+
     </script>
+
 </head>
 <body>
+
+
 <div id="new-content-avalable">
     <div class="alert alert-info alert-fixed" role="alert">
         <strong>New emails</strong> have arrived.
@@ -91,6 +115,7 @@ function printMessageBody($email, $purifier) {
             <i class="fas fa-sync"></i>
             Reload!
         </button>
+
     </div>
     <!-- move the rest of the page a bit down to show all content -->
     <div style="height: 3rem">&nbsp;</div>
@@ -125,7 +150,7 @@ function printMessageBody($email, $purifier) {
                     <p>
                         <a href="?action=random" role="button" class="btn btn-dark">
                             <i class="fa fa-random"></i>
-                            Random mailbox
+                            Open random mailbox
                         </a>
                     </p>
 
@@ -299,7 +324,7 @@ function printMessageBody($email, $purifier) {
         <p>
             <small>Powered by
                 <a
-                        href="https://github.com/HmmmmInc/HmmmMail"><strong>HmmmmInc/HmmmMail</strong></a>
+                        href="https://github.com/HmmmmInc/HmmmMail"><strong>HmmmMail</strong></a>
             </small>
         </p>
     </div>
@@ -307,16 +332,26 @@ function printMessageBody($email, $purifier) {
 
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="assets/jquery/jquery-3.3.1.slim.min.js"></script>
-<script src="assets/popper.js/1.14.3/umd/popper.min.js""></script>
-<script src="assets/bootstrap/4.1.1/bootstrap.min.js""></script>
-<script src="assets/clipboard.js/clipboard.min.js""></script>
+<script src="assets/jquery/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="assets/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="assets/bootstrap/4.1.1/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+<script src="assets/clipboard.js/clipboard.min.js"
+        integrity="sha384-8CYhPwYlLELodlcQV713V9ZikA3DlCVaXFDpjHfP8Z36gpddf/Vrt47XmKDsCttu"
+        crossorigin="anonymous"></script>
+
 <script>
     clipboard = new ClipboardJS('[data-clipboard-target]');
     $(function () {
         $('[data-tooltip="tooltip"]').tooltip()
     });
 
+    /** from https://github.com/twbs/bootstrap/blob/c11132351e3e434f6d4ed72e5a418eb692c6a319/assets/js/src/application.js */
     clipboard.on('success', function (e) {
         $(e.trigger)
             .attr('title', 'Copied!')
@@ -327,5 +362,6 @@ function printMessageBody($email, $purifier) {
     });
 
 </script>
+
 </body>
 </html>
