@@ -85,7 +85,7 @@ The app searches for config.php file into the entire directory, to avoid hack mo
         BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
         Header append Vary User-Agent
         </IfModule>
-* I haven't try with Nginx before, you can try ít. [How to?](https://www.google.com/search?q=gzip+nginx&oq=gzip+nginx)
+* I haven't try with Nginx before, you can try it. [How to?](https://www.google.com/search?q=gzip+nginx&oq=gzip+nginx)
 
 ## Enable SSL
 * Make sure you have set up SSL certificate forr your website.
