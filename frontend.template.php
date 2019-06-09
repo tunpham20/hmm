@@ -56,7 +56,7 @@ function printMessageBody($email, $purifier) {
     <link rel="stylesheet" href="assets/fontawesome/v5.0.13/all.css">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <title><?php
-        echo 'Hmmm Mail - '; 
+        echo 'HmmmMail - '; 
         echo $emails ? "(" . count($emails) . ") " : "";
         echo $user->address ?></title>
     <link rel="stylesheet" href="assets/spinner.css">
@@ -299,7 +299,7 @@ function printMessageBody($email, $purifier) {
         <p>
             <small>Powered by
                 <a
-                        href="https://github.com/synox/disposable-mailbox"><strong>HmmmmInc/HmmmMail</strong></a>
+                        href="https://github.com/HmmmmInc/HmmmMail"><strong>HmmmmInc/HmmmMail</strong></a>
             </small>
         </p>
     </div>

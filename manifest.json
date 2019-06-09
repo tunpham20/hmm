@@ -1,0 +1,16 @@
+{
+  "name": "HmmmMail",
+  "short_name": "H_Mail",
+  "description": "A self-hosted disposable mailbox service",
+  "lang": "en",
+  "start_url": "https://sharelun.com",
+  "display": "browser",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwiC5aTV2NviAhULM94KHaDRBK4QjRx6BAgBEAU&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3AGmail_Icon.png&psig=AOvVaw3lJ3v4sQYRHewVfT4tA6hs&ust=1560145399967124",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

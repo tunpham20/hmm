@@ -24,7 +24,7 @@ A **self-hosted** disposable mailbox service (aka trash mail) base on [disposabl
 
 Shared Hosting providers like Godaddy and Bluehost provides Full support for IMAP. While several hosts may not provide access to IMAP or SMTP services, in which case contact your hosting provider if they support IMAP extention.
 
-* [Download](https://github.com/bhadoomail/BhadooMail/releases/latest) the Latest Release.
+* [Download](https://github.com/HmmmmInc/HmmmMail/release) the Latest Release.
 * Upload the package into your Hosting Directory where you want to host your mailbox.
 * Eg. for example.com/ extract the package into root directory in most cases public_html is the root directory.
 * Rename `config.sample.php` to `config.php` and apply the imap settings. Move `config.php` to a safe location in a *parent directory* outside the `public_html`, so it is not reachable through the browser.
