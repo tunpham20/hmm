@@ -6,9 +6,7 @@ User $user - User object
 array $config - config array
 array $emails - array of emails
 */
-
 require_once './autolink.php';
-
 // Load HTML Purifier
 $purifier_config = HTMLPurifier_Config::createDefault();
 $purifier_config->set('HTML.Nofollow', true);
@@ -21,27 +19,21 @@ $mailIds = array_map(function ($mail) {
     return $mail->id;
 }, $emails);
 $mailIdsJoinedString = filter_var(join('|', $mailIds), FILTER_SANITIZE_SPECIAL_CHARS);
-
 // define bigger renderings here to keep the php sections within the html short.
 function niceDate($date) {
     $m = new \Moment\Moment($date, date_default_timezone_get());
     return $m->calendar();
 }
-
 function printMessageBody($email, $purifier) {
     global $config;
-
     // To avoid showing empty mails, first purify the html and plaintext
     // before checking if they are empty.
     $safeHtml = $purifier->purify($email->textHtml);
-
     $safeText = htmlspecialchars($email->textPlain);
     $safeText = nl2br($safeText);
     $safeText = \AutoLinkExtension::auto_link_text($safeText);
-
     $hasHtml = strlen(trim($safeHtml)) > 0;
     $hasText = strlen(trim($safeText)) > 0;
-
     if ($config['prefer_plaintext']) {
         if ($hasText) {
             echo $safeText;
@@ -58,8 +50,6 @@ function printMessageBody($email, $purifier) {
 }
 
 ?>
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -74,6 +64,7 @@ function printMessageBody($email, $purifier) {
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
           crossorigin="anonymous">
     <title><?php
+        echo "HmmmMail - ";
         echo $emails ? "(" . count($emails) . ") " : "";
         echo $user->address ?></title>
     <link rel="stylesheet" href="assets/spinner.css">
@@ -102,11 +93,8 @@ function printMessageBody($email, $purifier) {
         }, 15000);
 
     </script>
-
 </head>
 <body>
-
-
 <div id="new-content-avalable">
     <div class="alert alert-info alert-fixed" role="alert">
         <strong>New emails</strong> have arrived.
@@ -284,7 +272,6 @@ function printMessageBody($email, $purifier) {
 <!--                    <option value="3">Three</option>-->
 <!--                </select>-->
 <!--                <br>-->
-
         <small class="text-justify quick-summary">
             This is a disposable mailbox service. Whoever knows your username, can read your emails.
             Emails will be deleted after 30 days.
@@ -316,21 +303,15 @@ function printMessageBody($email, $purifier) {
                 There is no registration and no passwords. If you know the address, you can read the
                 emails.
                 <strong>Basically, all emails are public. So don't use it for sensitive data.</strong>
-
-
             </p>
         </div>
-
         <p>
             <small>Powered by
-                <a
-                        href="https://github.com/HmmmmInc/HmmmMail"><strong>HmmmMail</strong></a>
+                <ahref="https://github.com/HmmmmInc/HmmmMail"><strong>HmmmMail</strong></a>
             </small>
         </p>
     </div>
 </footer>
-
-
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="assets/jquery/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -344,13 +325,11 @@ function printMessageBody($email, $purifier) {
 <script src="assets/clipboard.js/clipboard.min.js"
         integrity="sha384-8CYhPwYlLELodlcQV713V9ZikA3DlCVaXFDpjHfP8Z36gpddf/Vrt47XmKDsCttu"
         crossorigin="anonymous"></script>
-
 <script>
     clipboard = new ClipboardJS('[data-clipboard-target]');
     $(function () {
         $('[data-tooltip="tooltip"]').tooltip()
     });
-
     /** from https://github.com/twbs/bootstrap/blob/c11132351e3e434f6d4ed72e5a418eb692c6a319/assets/js/src/application.js */
     clipboard.on('success', function (e) {
         $(e.trigger)
@@ -360,8 +339,6 @@ function printMessageBody($email, $purifier) {
             .tooltip('_fixTitle');
         e.clearSelection();
     });
-
 </script>
-
 </body>
 </html>
