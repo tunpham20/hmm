@@ -2,9 +2,10 @@
 
 ![](https://img.shields.io/badge/version-0.1b-blue.svg)    ![](https://img.shields.io/badge/php-%3E%3D7.2-green.svg) ![](https://img.shields.io/badge/status-beta-lightgrey.svg)
 
-A **self-hosted** disposable mailbox service (aka trash mail) base on [disposable-mailbox](https://github.com/synox/disposable-mailbox) with little edit :V.
+A **self-hosted** disposable mailbox service (aka trash mail), base on [disposable-mailbox](https://github.com/synox/disposable-mailbox) with little edit :V.
 
 **Demo**: 
+
 * [HmmmMail](https://sharelun.com/)
 * [BhadooMail](https://inbox.bhadoomail.com/inbox/) 
 
