@@ -91,7 +91,9 @@ The app searches for config.php file into the entire directory, to avoid hack mo
 * **IMAP Server has invalid certificate**: You might have to add `novalidate-cert` to the IMAP settings. See flags on: http://php.net/manual/en/function.imap-open.php.
 * **Error 500, Internal error**: Check your error log file. Add to `config.php`: 
 
-        ini_set('display_errors', 1);    ini_set('display_startup_errors', 1);    error_reporting(E_ALL);
+        ini_set('display_errors', 1);   
+        ini_set('display_startup_errors', 1);   
+        error_reporting(E_ALL);
 
 ## Credit
 This could not be possible without...
