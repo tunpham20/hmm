@@ -305,7 +305,7 @@ function printMessageBody($email, $purifier) {
         </div>
         <p>
             <small>Powered by
-                <ahref="https://github.com/HmmmmInc/HmmmMail"><strong>HmmmMail</strong></a>
+                <a href="https://github.com/HmmmmInc/HmmmMail"><strong>HmmmMail</strong></a>
             </small>
         </p>
     </div>
