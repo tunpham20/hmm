@@ -1,8 +1,12 @@
+<div align="center">
+
 # HmmmMail
 
-![](https://img.shields.io/badge/version-0.1b-blue.svg)    ![](https://img.shields.io/badge/php-%3E%3D7.2-green.svg) ![](https://img.shields.io/badge/status-beta-lightgrey.svg)
+![](https://img.shields.io/badge/version-0.1.1-blue.svg)    ![](https://img.shields.io/badge/php-%3E%3D7.2-green.svg) ![](https://img.shields.io/badge/status-beta-lightgrey.svg)
 
 A **self-hosted** disposable mailbox service (aka trash mail), base on [disposable-mailbox](https://github.com/synox/disposable-mailbox) with little edit :V.
+
+</div>
 
 **Demo**: 
 
@@ -21,7 +25,7 @@ A **self-hosted** disposable mailbox service (aka trash mail), base on [disposab
 * Display emails based on one [catch-all imap mailbox](https://www.google.ch/search?q=how+to+setup+catch-all+imap+mailbox).
 * Only requires PHP  >=7.2 and [php imap extension](http://php.net/manual/book.imap.php)
 
-### Installation
+## Installation
 
 ### Shared Hosting (IMAP Enabled)
 
@@ -33,30 +37,33 @@ Shared Hosting providers like Godaddy and Bluehost provides Full support for IMA
 * Rename `config.sample.php` to `config.php` and apply the imap settings. Move `config.php` to a safe location in a *parent directory* outside the `public_html`, so it is not reachable through the browser.
 * Edit config file using below parameters.
 
-## Configuration (config.php)
+### Configuration (config.php)
 
-The app searches for config.php file into the entire directory, to avoid hack move the file outside the root directory.
+The app searches for `config.php` file into the entire directory, to avoid hack move `config.php` file outside the root directory.
 
-* Use IMAP server provided by your Hosting Provider. For GMail use imap.gmail.com:993/imap/ssl
-* Use your username from Provider.
-* Use your password from Provider.
+* Use IMAP server provided by your Hosting Provider or other provider (such as GMail/GSuite, Yandex, ZohoMail...). For GMail use imap.gmail.com:993/imap/ssl
+* Use your username from provider.
+* Use your password from provider.
 
         $config['imap']['url'] = '{ imap.gmail.com:993/imap/ssl}INBOX';
         $config['imap']['username'] = "username";
         $config['imap']['password'] = "password";
 
-* Change emails domain with your own domain.
+* Change email domain with your own domain.
 
         $config['domains'] = array('example.com', 'example1.com' );
 
 * Add username that can not be accessed.
 
         $config['blocked_usernames'] = array('root', 'admin', 'temp', 'administrator', 'hostmaster', 'postmaster', 'webmaster');
+
 * Save file. Enjoy
 
-## Enable GZIP Compression (For Apache, Litespeed/Openlitespeed only)
+## Other options
 
-* Create/Open .htaccess in your `public_html` folder, paste this.
+### Enable GZIP Compression (For Apache, Litespeed/Openlitespeed only)
+
+* Create/Open `.htaccess` in your `public_html` folder, paste this.
 
         <ifModule mod_gzip.c>
         mod_gzip_on Yes
@@ -71,22 +78,22 @@ The app searches for config.php file into the entire directory, to avoid hack mo
 
 * I haven't try with Nginx before, you can try it. [How to?](https://www.google.com/search?q=gzip+nginx&oq=gzip+nginx)
 
-## Enable SSL
+### Enable SSL
 * Make sure you have set up SSL certificate forr your website.
-* Create/Open .htaccess in your `public_html` folder, paste this.
+* Create/Open `.htaccess` in your `public_html` folder, paste this.
 
         RewriteEngine On
         RewriteCond %{HTTPS} off
         RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-* Ejnoy :)
+* Enjoy :)
 
-## Frontend Design
+### Frontend Design
 
 * Fork the Repo.
 * You can edit the file frontend.template.php as per your needs.
 
-### Troubleshooting
+## Troubleshooting
 
 * **IMAP Server has invalid certificate**: You might have to add `novalidate-cert` to the IMAP settings. See flags on: http://php.net/manual/en/function.imap-open.php.
 * **Error 500, Internal error**: Check your error log file. Add to `config.php`: 
@@ -96,8 +103,10 @@ The app searches for config.php file into the entire directory, to avoid hack mo
         error_reporting(E_ALL);
 
 ## Credit
+
 This could not be possible without...
+
+ * https://github.com/synox/disposable-mailbox
  * https://github.com/barbushin/php-imap
  * https://github.com/gnugat-legacy/PronounceableWord
- * http://htmlpurifier.org/, 
- * https://github.com/synox/disposable-mailbox
+ * http://htmlpurifier.org/

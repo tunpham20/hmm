@@ -29,7 +29,7 @@ $config['imap']['password'] = "password";
 $config['domains'] = array('example.com', 'example1.com' );
 
 // When to delete old messages?
-$config['delete_messages_older_than'] = '30 days ago';
+$config['delete_messages_older_than'] = '5 days ago';
 
 
 // Mails to those usernames can not be accessed:

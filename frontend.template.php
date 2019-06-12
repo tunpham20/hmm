@@ -57,17 +57,15 @@ function printMessageBody($email, $purifier) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/bootstrap/4.1.1/bootstrap.min.css"
-          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/fontawesome/v5.0.13/all.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <title><?php
         echo $emails ? "(" . count($emails) . ") " : "";
         echo "Inbox - ";
         echo $user->address ?></title>
-    <link rel="stylesheet" href="assets/spinner.css">
-    <link rel="stylesheet" href="assets/custom.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="stylesheet" href="assets/css/spinner.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png">
 
     <script>
         var mailCount = <?php echo count($emails)?>;
@@ -311,32 +309,24 @@ function printMessageBody($email, $purifier) {
     </div>
 </footer>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="assets/jquery/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="assets/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="assets/bootstrap/4.1.1/bootstrap.min.js"
-        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
-<script src="assets/clipboard.js/clipboard.min.js"
-        integrity="sha384-8CYhPwYlLELodlcQV713V9ZikA3DlCVaXFDpjHfP8Z36gpddf/Vrt47XmKDsCttu"
-        crossorigin="anonymous"></script>
-<script>
-    clipboard = new ClipboardJS('[data-clipboard-target]');
-    $(function () {
-        $('[data-tooltip="tooltip"]').tooltip()
-    });
-    /** from https://github.com/twbs/bootstrap/blob/c11132351e3e434f6d4ed72e5a418eb692c6a319/assets/js/src/application.js */
-    clipboard.on('success', function (e) {
-        $(e.trigger)
-            .attr('title', 'Copied!')
-            .tooltip('_fixTitle')
-            .tooltip('show')
-            .tooltip('_fixTitle');
-        e.clearSelection();
-    });
-</script>
+    <script src="assets/js/jquery.slim.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/clipboard.min.js"></script>
+    <script>
+        clipboard = new ClipboardJS('[data-clipboard-target]');
+        $(function () {
+            $('[data-tooltip="tooltip"]').tooltip()
+        });
+        /** from https://github.com/twbs/bootstrap/blob/c11132351e3e434f6d4ed72e5a418eb692c6a319/assets/js/src/application.js */
+        clipboard.on('success', function (e) {
+            $(e.trigger)
+                .attr('title', 'Copied!')
+                .tooltip('_fixTitle')
+                .tooltip('show')
+                .tooltip('_fixTitle');
+            e.clearSelection();
+        });
+    </script>
 </body>
 </html>
