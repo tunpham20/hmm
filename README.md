@@ -8,8 +8,8 @@ A **self-hosted** disposable mailbox service (aka trash mail), base on [disposab
 
 **Demo**: 
 
-* [HmmmMail](https://sharelun.com/)
-* [BhadooMail](https://inbox.bhadoomail.com/inbox/) 
+[HmmmMail](https://sharelun.com/)
+[BhadooMail](https://inbox.bhadoomail.com/inbox/) 
 
 **Screenshot**
 
