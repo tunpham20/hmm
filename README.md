@@ -15,6 +15,7 @@ A **self-hosted** disposable mailbox service (aka trash mail), base on [disposab
 ![Imgur](https://i.imgur.com/2Lqnp75.png)
 
 </div>
+
 ## Features
 
 * Anonymous usage, generate random email addresses. 
